@@ -1,0 +1,174 @@
+﻿/* GENERAL ELEMENTS */
+	body { padding:10px 0 0 0; margin:0; color:#575757 !important; font-family:Arial, Verdana, Helvetica, sans-serif; }
+	.body {background-color:#a5dfed;}	
+	table { border-collapse: collapse; }
+	td,th { margin:0; padding:0; text-align:left; vertical-align:top; }
+	a { color:#0f67a2; text-decoration:underline; }
+	a:hover { color:#31b0f2; }	
+	img { border:0;}
+	input,select { font-size:10px; }
+	
+	
+	/* SHAREPOINT OVERWRITE */
+	.ms-WPBody TD {font-family:Arial, Verdana, Helvetica, sans-serif !important; }
+	.ms-WPBody H2 {font-size: 13px !important; font-weight:bold; }
+	.ms-WPBody {font-family:Arial, Verdana, Helvetica, sans-serif !important; }	
+
+	/* Rest of site Overwrite */
+	.inv-mediaarea { background-image: none !important; }
+	.inv-subnavarea { display: none !important; }
+
+/* New Advanced Search Tabs */
+	.searchTabs { width: 100%; height:39px; padding-bottom:0px; color:#fff; font-weight:bold; }
+	.searchTabs .search { float:left; margin:0; padding:0; width:354px; height:39px; background:url(/Doctor-Locator/PublishingImages/SearchHeader.png) top left no-repeat; text-indent:-9999px; }
+	.searchTabs .tab1, .searchTabs .tab2, .searchTabs .tab3, .searchTabs .tab4 , .searchTabs .tab5, .searchTabs .tab6 { float: right; height:28px; width: 153px; margin: 0 0 0 3px; padding:0; background:url(/Doctor-Locator/PublishingImages/tab_basic.png); }
+	.searchTabs div a { display:block; padding:0; width:100%; height:28px; text-indent:-9999px; }
+	.searchTabs .tabContainer { display: block; width: 470px; margin-left: 60px; float: left; }
+	.searchTabs .tab1 { /* unused? */ }
+	.searchTabs .tab2 { background-position: -157px 0; }
+	.searchTabs .tab3 { background-position: -312px 0; }
+
+	.searchTabs .tab4 { background-position: 0px -36px; }
+	.searchTabs .tab5 { background-position: -157px -36px; }
+	.searchTabs .tab6 { background-position: -312px -36px; }
+
+	.showHide {font-size:10px; float:right; margin:5px 9px 0 0;}	
+	.searchInput {margin:0; padding:15px 15px 0px 15px;}
+	.searchInput select {font-size:10px; font-family:Arial, Verdana, Helvetica, sans-serif !important;}	
+	
+	/* New Advanced Search Controls Classes*/
+	.docLocPod { height:45px; float:left; padding: 0 0 0 9px; }
+	.docLocPod span { display:block; width:190px; }
+	.dlPromo { float: right; margin-right: 45px; padding:0; font-size:12px; height:auto; color: #00adef; line-height:18px; }
+	.dlPromo span { width:480px;  }
+	.dlPromo a {color: #00adef !important; text-decoration:underline !important;}
+	.dlPromo a:hover {color: #0067ac !important; text-decoration:underline;}			
+	
+	.docLocPod input, .docLocPod select {display:block; width:150px;}
+	.docLocPod.zip { width: 110px; }
+	.docLocPod.zip span,.docLocPod.zip input {  width:100px; }
+	.filterByTeenOnly { width: 220px; float: left; }
+	.filterByTeenOnly input { display: inline; float: left; width: 15px; margin-right: 4px; }
+	.filterByTeenOnly label { display: inline-block; float: left; margin-right: 5px; width: 85px; }
+	.docLocPod.buttons { height: 66px; float: right; margin-right: 60px; }
+	.docLocPod.advancedSearch { float:right; margin-right:50px; }
+	
+	.filterByDocLocPod {width:270px; height:45px; float:left; padding: 0 0 0 15px;}
+	.filterByDocLocPod span {display:block; width:180px;}
+	.filterByDocLocPod select {display:block; width:270px;}
+	
+	.docListBottomLeft { width: 1px; height:25px;}
+	.docListBottomRight { width: 1px; height:25px;}	
+	.docListBottomLeft img, .docListBottomRight img { display: none; }
+	
+	.docListBottom { background-image: url(/Doctor-Locator/PublishingImages/bg_paginator.gif); background-repeat: repeat-x; width: 958px; font-family: arial; font-size: 10px; color: #ffffff;padding: 3px 5px 0px 0; text-align: right;}
+	.docListBottom a { color:#ffffff !important; font-weight: bold; line-height: 25px; }
+
+	/* Styles for New Search Results Page */
+	.nextStep {height:105px; width:743px; background:url(/Doctor-Locator/PublishingImages/bg_nextstep.jpg) top right no-repeat; background-color:#fff;}
+	.pod {float:left; border-left:solid 1px #ccc; height:103px; margin:18px 0 10px 0;}
+	.pod h1 {font-size:21px; font-weight:normal; color:#666; margin:0 0 5px 0; }
+	.pod h2 {font-size:18px; font-weight:normal; color:#666;margin:0 0 5px 0;}
+	.pod p {font-size:12px; line-height:16px; color:#666; margin:0; padding:0;}
+	.pod a {font-size:12px; color:#4f8b11; text-decoration:underline;}	
+	#pod1 { width:435px;padding:3px 15px 0 10px; border-left:none;}		
+	#pod2 { width:190px;padding:3px 0 0 10px;}
+	
+/* Doc Locator */
+	.DocLocAdvSearchHeader { margin:0; padding:0; font-size:12px; font-weight:bold; line-height:40px; padding-left:20px;color:#628a31;}
+	.DocLocAdvSearchSwitchLink { margin:0; padding:0; font-size:11px; line-height:26px;padding-left:20px;}
+	.DocLocAdvSearchLabel { margin:0; padding-right: 15px;font-size:12px; line-height:30px;padding-left:20px;}
+	.DocLocAdvSearchTextBox { margin-left:20px; font-size:12px; }
+	.DocLocAdvSearchDropdown { margin-left:20px; font-size:12px; line-height:30px; }
+	
+	.DocLocAdvSearchButton	{width:110px !important; height:33px; margin:0 0 3px 0; padding:0;}
+	.DocLocAdvSearchError { margin:0; padding:0; font-size:11px; padding-left:20px;color:red;}
+	
+	/* Doc Locator Result */
+	.newSearch { width:520px;padding-bottom:0px; padding-top:0px;padding-left:20px }
+	.noDocError { color:red; margin:0px 0px 0px 0px; padding:0 0 0 0; }
+	
+	.DocLocResultsSearchLink { text-align:left; float:left;text-decoration:underline; }
+ 	.DocLocResultsPagingLinks {text-align:right; float:clear;}
+
+    .DocLocResultMapItSpacer {padding-left:8px;}
+    
+	.doctorResults { width:100%; margin:0; padding: 0; }
+	.doctorResults img { float:left; margin-left:2px; }
+	.doctorResults p { font-size:9px;  padding:0 0 0 0; }
+	.doctorResults a { color:#588822; }
+
+	.DocLocRatingCell { width:50px; background:url(/Doctor-Locator/PublishingImages/icon_provider.gif); background-position: 50% 50%; background-repeat: no-repeat; }
+	.DocLocPreferredRatingCell { width:50px; background:url(/Doctor-Locator/PublishingImages/icon_preferred.gif); background-position: 50% 50%; background-repeat: no-repeat; }
+	.DocLocPremiereRatingCell {	width:50px; background:url(/Doctor-Locator/PublishingImages/icon_premiere.gif); background-position: 50% 50%; background-repeat: no-repeat; }
+	.DocLocEliteRatingCell { width:50px; background:url(/Doctor-Locator/PublishingImages/icon_elite.gif); background-position: 50% 50%; background-repeat: no-repeat; }
+	
+	.invH2ColumnNoPad td { height: 25px; text-align: center; background: url(/Doctor-Locator/PublishingImages/bg_paginator.gif); }
+	.invH2ColumnNoPad td span { height: 25px; width: 100px; display: block; background: url(/Doctor-Locator/PublishingImages/bg_th.png); margin: 0px auto; }
+	.invH2ColumnNoPad td span.thdoctor { background-position: -117px 0; }
+	.invH2ColumnNoPad td span.thaddress { background-position: -373px 0; }
+	.invH2ColumnNoPad td span.thcontact { background-position: -607px 0; }
+	.invH2ColumnNoPad td span.thinfo { background-position: -808px 0; }
+			
+	.searchHead { height:37px; border-top: 1px solid #cfe9f2; padding-bottom: 15px; }
+	.searchHead h2 { color: #0067ac; font-size:12px !important; height: 37px; line-height: 37px; font-weight:bold; background-color: #f3f9fe; }
+	
+	.map h2 { font-size:10px; text-transform:uppercase; margin:0; padding: 0;}
+	.mapCell {width:599px; height:411px; padding-right: 20px; }
+	.key { width:302px; height:39px; background:url(/Doctor-Locator/PublishingImages/KeyHeader.png); }
+	.key h2 { color: white; text-indent: -20000px; }
+	.MapKeyFooter { margin:10px 18px 0 18px; padding:0px 4px 0 6px; font-size:10px; color:#666666; }
+	.MapKeyText { margin:0; padding:0x; font-size:10px; color:#666666; line-height:15px; font-weight: normal;}
+
+	.providertypes {width:342px; height:386px; background-color: #f3f9fe;}
+	.providertypes table { margin:12px 0 0 18px; }
+	.providertypes .icon { width:42px; padding-top:5px; }
+	.providertypes .desc { color: #0067ac; font-size: 13px; font-weight: bold; padding-left: 15px; padding-top:5px; }
+	.providertypes .disclaim {font-size:9px; position:relative; top:135px; left:5px; width:120px;}
+
+	.DocLocNameCell { width:198px; font-size: 10px; font-weight: bolder; color: #000000; border-right:1px solid; border-color:#ffffff; padding: 5px 0 0px 5px;}
+	.DocLocNameCell strong { color:#000000; font-size: 13px; font-weight: bolder; padding: 8px 0 0px 5px; display:inline-block;}
+
+ 	.DocLocAddressCell {width:224px; font-size: 10px; font-weight: bolder; color: #000000; border-right:1px solid; border-color:#ffffff; padding: 5px 0 0px 5px; }
+	.DocLocAddressCell span {color:#000000; font-size: 10px; font-weight: normal; }	
+
+	.DocLocAddtlRatingCell { width:30px; margin:5px 0px 10px 0; padding:0 5px 0 0; }
+	.DocLocAddtlNameCell { margin:5px 30px 10px 0; padding:0 0 10px 0; }
+	.DocLocAddtlAddressCell {  margin:5px 0px 10px 0; padding:0 0 10px 0; }
+	.DocLocAddtlDetailsCell { margin:5px 0 10px 0; padding:0 0 10px 0; }
+	
+	.DocLocPrefDoc { font-size: 11px; padding: 8px 0 0px 5px;}
+	.DocLocFacultyDoc { font-size: 11px; padding: 0px 0 5px 5px;}		
+	
+	.disclaimer { padding:5px 10px 15px 0px; }
+	.disclaimer p { width:93%; font-size:10px; color:#333333; padding:0px 0px 5px 20px;}	
+
+	.DocLocFacultyDoc { font-size: 11px; padding: 0px 0 5px 5px;}	
+
+    .mapPopup {width:185px; border:0; margin:0; padding:0;}
+	.mapPopup h2 {font-size:12px; font-weight:bold; color:#666; margin:0; padding:0; display:block; white-space: nowrap; padding-top: 5px;}
+	.mapPopup span {font-size:11px; color:#666;display:block;}
+	.mapPopup .specialty {display:block; font-style:italic; }
+	.mapPopup .location {display:block; }
+	.mapPopup .teen {color:#c60;}
+	.mapPopup .financing {color:#393;}
+	.mapPopup a {font-size:11px; color:#1965B4;;display:block;}
+		
+	.DocLocDetailsCell {width:175px; font-size: 10px; color: #000000; border-right:1px solid; border-color:#ffffff; padding:5px 0 5px 5px; margin:0px;}
+	.DocLocResultsPhoneNumber {font-size: 10px; }
+ 	.DocLocResultsWebSiteLink {font-size: 10px;}
+	.DocLocResultsLink {color:#0063B8 !important; font-size: 10px; font-weight: normal; padding: 0px 0 0px 5px; text-decoration: none; }
+	.DocLocInfoCell {width:105px !important; font-size: 10px; font-weight: bolder; color: #000000; border-right:1px solid; border-color: #ffffff; padding: 5px 0 0px 5px;	}
+	
+	.DocLocDocType {color:#000000; font-size: 10px; font-weight: normal; padding: 0px 0 0px 5px; }
+	.DocLocSegmentName {color:#000000; font-style: italic; font-size: 10px; font-weight: normal; padding: 0px 0 0px 5px;}	
+	
+	.docListTeenContent { display: block; width:42px; height: 50px; }
+	.docListTeenContent a { display: block; width:42px; height: 57px; text-indent: -20000px; background:url(/Doctor-Locator/PublishingImages/icon_teen.gif); }
+	a.docListTeenContent:visited {color:#D17820 !important; }
+	.docListFinancingContent {color:#339933; font-style: normal; font-size: 11px; font-weight: normal; padding: 5px 0 0px 0; }	
+	.DocLocResultRow td {height:75px !important;}
+	.DocLocResultRowAlternate td {height:75px !important; background-color:#f3f9fe !important;}
+	
+	.disclaimerArea { margin: 0px 25px; border-bottom: 1px solid #cfe9f2; }
+	.disclaimerArea p { margin-bottom: 10px; }

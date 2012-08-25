@@ -1,0 +1,416 @@
+@charset "utf-8";
+/* CSS Document */
+/* RESET STYLES */
+/*
+   Thanks to Eric Meyer for working hard on this master
+   styles reset form.   The post that this file was created
+   from is located here: http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/
+*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body
+{
+	background-color:#5280b1;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:11px;
+	color:#000;
+	margin:0;
+	padding:0;
+	border:0;
+}
+/*---- TopWraper -----*/
+#TopWraper
+{
+	width:100%;
+	height:65px;
+	background-color:#243646;
+	float:left;
+}
+#TopWraper .TopCenDiv
+{
+	width:1108px;
+	margin:0 auto;
+}
+#TopWraper .TopCenDiv .Logo
+{
+	float:left;
+	width:210px;
+	height:31px;
+	background:url(../images/logo.png) no-repeat top left;
+	margin-top:28px;
+}
+/*---- TopWraper -----*/
+
+/*---- PrimaryNavigation -----*/
+#TopWraper .TopCenDiv .TopR
+{
+	float:right;
+}
+#TopWraper .TopCenDiv .TopR .UCDiv
+{
+	float:left;
+	font-size:11px;
+	margin-top:10px;
+}
+.TopR .UCDiv span
+{
+	float:left;
+	color:#bbc7d5;
+	background:url(../images/user-icon.png) no-repeat top left;
+	height:16px;
+	padding:4px 10px 0px 22px;
+	
+}
+.TopR .UCDiv a.LogOut
+{
+	float:left;
+	color:#c3d6eb;
+	text-decoration:none;
+	background:url(../images/logout-bg.png) no-repeat top left;
+	width:46px;
+	height:19px;
+	padding-top:3px;
+	text-align:center;
+}
+.TopR .UCDiv a:hover
+{
+	color:#fff;
+}
+#TopMainNav
+{
+	margin:0 auto;
+	width:1108px;
+}
+#TopMainNav .PrimaryNav
+{
+	float:left;
+	width:1108px;
+	background:url(../images/topnav-bg.png) no-repeat top left;
+	height:40px;
+}
+/*.PrimaryNav ul
+{
+	float:left;
+	margin:0 200px 0px 0px;
+	padding:0;
+}
+.PrimaryNav ul li
+{
+	list-style-type:none;
+	display:inline;
+	float:left;
+	margin-left:1px;
+}
+.PrimaryNav ul li a
+{
+	color:#fff;
+	text-decoration:none;
+	padding:9px 10px 0px;
+	float:left;
+	height:24px;
+	font-weight:bold;
+}
+.PrimaryNav ul li a:hover
+{
+	background-color:#243646;
+}
+.PrimaryNav ul li a.Selected
+{
+	background-color:#243646;
+}*/
+/*---- PrimaryNavigation -----*/
+
+/*---- MiddleWraper -----*/
+.MidBlock
+{
+	float:left;
+	width:100%;
+}
+.MidBlock .MidCenDiv
+{
+	margin:0 auto;
+	width:1108px;
+}
+/*---- MiddleWraper -----*/
+
+/*---- PromoBoxDiv & LoginDiv -----*/
+.MidCenDiv .PromoBoxDiv
+{
+	float:left;
+	width:1108px;
+}
+.MidCenDiv .PromoBoxDiv .PromoInfoDiv
+{
+	float:left;
+	width:1078px;
+	padding:15px;
+}
+.PromoBoxDiv .PromoInfoDiv .WriteUp
+{
+	float:left;
+	width:700px;
+	padding-right:37px;
+}
+.PromoBoxDiv .PromoInfoDiv .WriteUp h1
+{
+	float:left;
+	color:#fff;
+	font-weight:bold;
+	font-style:italic;
+	font-size:18px;
+}
+.PromoBoxDiv .PromoInfoDiv .WriteUp p
+{
+	padding:10px 0px;
+	margin:0;
+	clear:both;
+	color:#b4cfe6;
+	font-size:12px;
+}
+.PromoBoxDiv .PromoInfoDiv .WriteUp .LineSpacing
+{
+	line-height:20px;
+}
+.PromoBoxDiv .PromoInfoDiv .PromoImg
+{
+	float:left;
+}
+
+
+.MidCenDiv .LoginBoxDiv
+{
+	margin:0 auto;
+	width:707px;
+	background:url(../images/login-bg.jpg) no-repeat top left;
+	height:346px;
+	margin-top:100px;
+	margin-bottom:50px;
+}
+.MidCenDiv .LoginBoxDiv .LoginDiv
+{
+	float:right;
+	width:297px;
+	margin:93px 67px 0px 0px;
+}
+.LoginBoxDiv .LoginDiv .H
+{
+	float:left;
+	width:100%;
+	color:#fff;
+	font-weight:bold;
+	font-style:italic;
+	padding-bottom:20px;
+}
+.LoginBoxDiv .LoginDiv .Row
+{
+	float:left;
+	width:297px;
+	padding-bottom:15px;
+}
+.LoginBoxDiv .LoginDiv .Row .FieldName
+{
+	float:left;
+	width:85px;
+	color:#fff;
+	padding-top:10px;
+}
+.LoginBoxDiv .LoginDiv .Row .FieldValue
+{
+	float:left;
+	padding-left:10px;
+	width:202px;
+}
+.LoginBoxDiv .LoginDiv .Row .FieldValue .TextBox
+{
+	float:left;
+	width:200px;
+	border:1px solid #000;
+	height:27px;
+	background-color:#1e4f8a;
+	color:#80aee0;
+	padding-top:5px;
+}
+.LoginBoxDiv .LoginDiv .Row .FieldValue .chkBox
+{
+	float:left;
+	width:13px;
+	height:13px;
+	border:0px;
+}
+.LoginBoxDiv .LoginDiv .Row .FieldValue span.R
+{
+	float:left;
+	padding:3px 0px 0px 5px;
+	color:#fff;
+}
+.LoginBoxDiv .LoginDiv .ForGotDiv
+{
+	float:right;
+	width:202px;
+	color:#80aee0;
+	text-align:right;
+	border-top:1px solid #5783c5;
+	padding-top:10px;
+}
+.LoginBoxDiv .LoginDiv .ForGotDiv a
+{
+	text-decoration:none;
+	color:#80aee0;
+}
+.LoginBoxDiv .LoginDiv .ForGotDiv a:hover
+{
+	text-decoration:underline;
+}
+/*---- PromoBoxDiv & LoginDiv -----*/
+
+.ButtonsDiv
+{
+	float:right;
+}
+.ButtonsDiv a.Button
+{
+	float:left;
+	color:#000;
+	font-weight:bold;
+	border:1px solid #8fb8e5;
+	background-color:#6c9cd0;
+	width:80px;
+	height:18px;
+	text-decoration:none;
+	text-align:center;
+	padding-top:5px;
+}
+
+.LeftGap15
+{
+	margin-left:15px;
+}
+.TopGap15
+{
+	margin-top:15px;
+}
+
+.SectionDivs
+{
+	float:left;
+	width:1108px;
+	background-color:#fff;
+}
+.SectionDivs .LSD
+{
+	float:left;
+	width:17px;
+	height:327px;
+	background:url(../images/sep-lines.jpg) no-repeat -9px top;
+}
+.SectionDivs .RSD
+{
+	float:right;
+	width:17px;
+	height:327px;
+	background:url(../images/sep-lines.jpg) no-repeat 9px top;
+}
+.SectionDivs .SD
+{
+	float:left;
+	width:17px;
+	height:327px;
+	background:url(../images/sep-lines.jpg) no-repeat left top;
+}
+.SectionDivs .InfoBox
+{
+	float:left;
+	width:298px;
+	padding:20px 28px 20px 20px;
+}
+.SectionDivs .InfoBox .H
+{
+	float:left;
+	font-size:19px;
+	color:#000;
+	
+}
+.SectionDivs .InfoBox .Ser1
+{
+	background:url(../images/sec-icons.jpg) no-repeat left top;
+	float:left;
+	height:23px;
+	padding-left:30px;
+}
+.SectionDivs .InfoBox .Ser2
+{
+	background:url(../images/sec-icons.jpg) no-repeat left -32px;
+	float:left;
+	height:23px;
+	padding-left:30px;
+}
+.SectionDivs .InfoBox .Ser3
+{
+	background:url(../images/sec-icons.jpg) no-repeat left -66px;
+	float:left;
+	height:23px;
+	padding-left:30px;
+}
+.SectionDivs .InfoBox .LB
+{
+	float:left;
+	border:1px solid #d5dde6;
+	padding:10px;
+	background:url(../images/sec-box-bg.jpg) repeat-x left bottom;
+	color:#4a535d;
+	margin-top:10px;
+	width:276px;
+}
+.SectionDivs .InfoBox .LB p
+{
+	padding-bottom:10px;
+	line-height:17px;
+}
+.SectionDivs .InfoBox a.More
+{
+	float:left;
+	border:1px solid #d5dde6;
+	padding:5px 10px;
+	text-decoration:none;
+	color:#000;
+	background-color:#fff;
+}
+.SectionDivs .InfoBox a.More:hover
+{
+	text-decoration:underline;
+}
+
+/*---- FooterDiv -----*/
+#FooterDiv
+{
+	clear:both;
+	width:1108px;
+	margin:0 auto;
+}
+.FooterCenDiv
+{
+	border-top:1px solid #3b6693;
+	float:left;
+	width:100%;
+	margin-top:20px;
+}
+.FooterCenDiv .FootNote
+{
+	float:left;
+	width:100%;
+	height:25px;
+	color:#fff;
+	border-top:1px solid #6593c4;
+	padding-top:8px;
+}
+/*---- FooterDiv -----*/

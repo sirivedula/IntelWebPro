@@ -1,0 +1,206 @@
+'ExportName=Standard Labor for HR Exporter
+'#include Include_ExcelV1.inc
+
+Dim AmountTransIndex
+
+Function MetaInfo()
+	exp.Version = "1.0"
+	exp.ExportID = "StandardReg"
+	exp.ExportTitle = "Standard Register"
+	exp.ExportType = "Exporter"
+	exp.MustHaveRightsToPages = "Pay History"
+	exp.AllowCheckDates = True
+	exp.AllowAnyDates = True
+	exp.OneDate = False
+	exp.supportedGroupCount = 0
+	exp.supportedFilterCount = 0
+	exp.supportedSortCount = 0
+	exp.supportedExtensions = "xls,csv,prn,txt,htm"
+	exp.supportedGroups =  ""
+	exp.supportedSorts = ""
+	exp.supportedTables = "EPayHist,CDed,CEarn,STaxCodes"
+	exp.parameter1 = ""
+	exp.parameter2 = ""
+	exp.AllowMultiCo = true
+	exp.AvailableToCos = "20179,21343,21675,21676,21677,23117" 
+	exp.AdditionalFormulas = ""
+end function
+
+Sub BeginExport()
+	Exp.beginExport "xls",false
+	createExcelObjects()
+End sub
+
+Sub BeginCompany()
+	
+end Sub
+
+
+Sub EndCompany()
+	userfilters = exp.PropertyValue("UserFilter")
+	if Len(userfilters) > 0 then
+		userfilters = " and (" & userfilters & ") " 
+	end if
+
+	codeInfoSQL = "Select det, detcode, codetype, description , '' as excelColumn from	(SELECT EPayHistDetail.det, EPayHistDetail.detCode, case when EPayHistDetail.det='E' then 'Earns' else 	case when EPayHistDetail.det='D' AND (CDed.taxExempt is null OR CDed.taxExempt='') AND CDed.dedType In ('401k','403b','408k','457b','501c','125','129','Simple') then 'PreTax' else	'AfterTax'  end end as codeType, 	case EPayHistDetail.det when 'D' then CDed.shortdescription when 'E' then CEarn.description when 'T' then staxcodes.description else '' end as description FROM EInfo Inner Join EPayHist ON EPayHist.id = EInfo.id and epayhist.co = einfo.co Inner Join CCalendar ON CCalendar.CalendarId = EPayHist.CalendarId And CCalendar.Co = EPayHist.Co Inner Join EPayHistDetail ON EPayHist.trans = EPayHistDetail.trans Left Join CDed ON CDed.dcode = EPayHistDetail.detCode and cded.co = epayhistdetail.co And EPayHistDetail.det = 'D' Left Join CEarn ON cearn.ecode = EPayHistDetail.detCode and cearn.co = epayhistdetail.co And EPayHistDetail.det = 'E' Left Join STaxCodes ON staxCodes.tcode = EPayHistDetail.detCode And EPayHistDetail.det = 'T' WHERE CCalendar.Co = [paramComp] And CCalendar.process>=[paramBeginProcess] And CCalendar.process<=[paramEndProcess] And (TransType is not null or TransType <> 'X') And (det<>'D' OR detCode not like 'PPD__') [paramUserFilter] group by EPayHistDetail.det, EPayHistDetail.detCode,case when EPayHistDetail.det='E' then 'Earns' else 	case when EPayHistDetail.det='D' AND (CDed.taxExempt is null OR CDed.taxExempt='') AND CDed.dedType In ('401k','403b','408k','457b','501c','125','129','Simple') then 'PreTax' else 'AfterTax'  end end, 	case EPayHistDetail.det when 'D' then CDed.shortdescription when 'E' then CEarn.description when 'T' then staxcodes.description else '' end) codeInfo	order by case codetype when 'AfterTax' then 3 when 'PreTax' then 2 else 1 end , det, detcode"
+	codeInfoSQL = Replace(codeInfoSQL, "[paramUserFilter]", userfilters, 1, -1, vbTextCompare)
+	aryCodes = exp.ReturnSet(codeInfoSQL)
+	codesMax = exp.ArrUBound(aryCodes, 2)
+	
+	
+	'Fill Excel Column
+	For I = 0 to codesMax
+		aryCodes(4, I) = Letters(I+3)
+	Next
+	
+	AmountSQL = "select EPayHist.Trans, EPayHistDetail.det, EPayHistDetail.detcode, sum(EPayHistDetail.amount) as Amount FROM EInfo Inner Join EPayHist ON EPayHist.id = EInfo.id and epayhist.co = einfo.co Inner Join CCalendar ON CCalendar.CalendarId = EPayHist.CalendarId And CCalendar.Co = EPayHist.Co Inner Join EPayHistDetail ON EPayHist.trans = EPayHistDetail.trans Left Join CDed ON CDed.dcode = EPayHistDetail.detCode and cded.co = epayhistdetail.co And EPayHistDetail.det = 'D' Left Join CEarn ON cearn.ecode = EPayHistDetail.detCode and cearn.co = epayhistdetail.co And EPayHistDetail.det = 'E' Left Join STaxCodes ON staxCodes.tcode = EPayHistDetail.detCode And EPayHistDetail.det = 'T' WHERE CCalendar.Co = [paramComp] And CCalendar.process>=[paramBeginProcess] And CCalendar.process<=[paramEndProcess] And (TransType is not null or TransType <> 'X') And (det<>'D' OR detCode not like 'PPD__') [paramUserFilter] group by EPayHist.Trans, EPayHistDetail.det, EPayHistDetail.detcode order by epayhist.trans"
+	AmountSQL = Replace(AmountSQL, "[paramUserFilter]", userfilters, 1, -1, vbTextCompare)
+	aryAmounts = exp.ReturnSet(AmountSQL)
+	maxAmounts = exp.ArrUBound(aryAmounts, 2)
+	
+	EmpSQL = "SELECT EInfo.id, EInfo.co, isnull([lastName],'') + ', ' + isnull([firstname],'') AS EmpName, EPayHist.trans, EPayHist.checkAttributes, EPayHist.net, EPayHist.Gross, case when [checkNumber] > 1 then 'Chk #' + cast(CheckNumber as varchar(20)) else 'DD #' + cast(VoucherNumber as varchar(20)) end AS Descript, CCalendar.CheckDate FROM EInfo Inner Join EPayHist ON EPayHist.id = EInfo.id and epayhist.co = einfo.co Inner Join CCalendar ON CCalendar.CalendarId = EPayHist.CalendarId And CCalendar.Co = EPayHist.Co inner join Security_Emp_Filter_V001 on Security_Emp_Filter_V001.id = einfo.id and Security_Emp_Filter_V001.co = einfo.co WHERE CCalendar.Co = [paramComp] And CCalendar.process>=[paramBeginProcess] And CCalendar.process<=[paramEndProcess] [paramUserFilter] order by epayhist.trans"
+	EmpSQL = Replace(EmpSQL, "[paramUserFilter]", userfilters, 1, -1, vbTextCompare)
+	aryEmps = exp.ReturnSet(EmpSQL)
+	
+	Set ws = getWorkSheet(1)
+	nr = getLastRow(ws) + 1
+	
+	empCount = exp.ArrUBound(aryEmps, 2)
+	AmountTransIndex = 0
+	For I = 0 to empCount
+		ws.Range("A" & nr).Value = aryEmps(2, I)	'Employee Name
+		if aryEmps(4, I) = "Regular" then			'Check Attribute
+			ws.Range("B" & nr).Value =  ""
+		else
+			ws.Range("B" & nr).Value = aryEmps(4, I)
+		end if
+		ws.Range("C" & nr).Value = aryEmps(6, I)	'Gross Wages
+
+		trans = aryEmps(3, I)		'Trans
+		For J = AmountTransIndex to maxAmounts
+			if aryAmounts(0, J) = trans then
+				detAndCode = aryAmounts(1, J) & aryAmounts(2, J)
+				Col = getCodeExcelColumn(aryCodes, codesMax, detAndCode)
+				if Col <> "" then
+					ws.Range(Col & nr).Value = aryAmounts(3, J)
+				end if
+				AmountTransIndex = AmountTransIndex + 1
+			end if
+		Next
+		
+		ws.Range(letters(codesMax+3) & nr).Value = aryEmps(5, I)	'Net
+		ws.Range(letters(codesMax+4) & nr).Value = aryEmps(7, I)	'Check Desc
+		ws.Range(letters(codesMax+5) & nr).Value = aryEmps(8, I)	'Check Date
+		ws.Range(letters(codesMax+6) & nr).Value = aryEmps(0, I)	'Emp ID
+		nr = nr + 1
+	Next
+
+	For I = 0 to 4
+		ws.Rows("1:1").Insert
+	Next
+	
+    ws.Range("A1").Value = Exp.CInfo("Name")
+    ws.Range("A2").Value = "Payroll Register Report"
+    If ProcToDate(Exp.ProcStart) = ProcToDate(Exp.ProcEnd) Then
+        ws.Range("A3").Value = Exp.Fmat(ProcToDate(Exp.ProcStart), "mm/dd/yyyy")
+    Else
+        ws.Range("A3").Value = Exp.Fmat(ProcToDate(Exp.ProcStart), "mm/dd/yyyy") & " to " & Exp.Fmat(ProcToDate(Exp.ProcEnd), "mm/dd/yyyy")
+    End If
+    ws.Range("A5").Value = "Employee"
+    ws.Range("C5").Value = "Gross Wages"
+	
+	ws.Range("A6:" & letters(codesMax+3+4) & nr+5).Sort ws.Range("A6"), 1, , , , , ,2
+	'ws.Range("A6:" & letters(codesMax+3+4) & nr+5).Select
+	
+	earnEndCol = 0
+	preEndCol = 0
+	postEndCol = 0
+	For I = 0 to codesMax
+		ws.Range(Letters(I+3) & "5").Value = aryCodes(1, I) & "-" & aryCodes(3, I)
+		if (aryCodes(2, I) = "Earns") then
+			earnEndCol = I
+		elseif (aryCodes(2, I) = "PreTax") then
+			preEndCol = I
+		elseif (aryCodes(2, I) = "AfterTax") then
+			postEndCol = I
+		end if
+	Next
+	if (earnEndCol > 0) then
+		ws.range("D4:" & letters(earnEndCol+3) & "4").merge
+		ws.range("D4").value = "Earnings"
+		ws.Range("D4:" & letters(earnEndCol+3) & "4").HorizontalAlignment = &HFFFFEFF4
+		ws.Range("D4:" & letters(earnEndCol+3) & "5").Interior.ColorIndex = 36
+	end if
+	
+	if(preEndCol > earnEndCol) then
+		ws.Range(letters(earnEndCol+4) & "4:" & letters(preEndCol+3) & "4").Merge
+		ws.Range(letters(earnEndCol+4) & "4").Value = "Pre Tax Deductions"
+		ws.Range(letters(earnEndCol+4) & "4:" & letters(preEndCol+3) & "4").HorizontalAlignment = &HFFFFEFF4
+		ws.Range(letters(earnEndCol+4) & "4:" & letters(preEndCol+3) & "5").Interior.ColorIndex = 35
+	end if
+	
+	if(postEndCol > preEndCol) then
+		ws.Range(letters(preEndCol+4) & "4:" & letters(postEndCol+3) & "4").Merge
+		ws.Range(letters(preEndCol+4) & "4:" & letters(postEndCol+3) & "4").HorizontalAlignment = &HFFFFEFF4
+		ws.Range(letters(preEndCol+4) & "4").Value = "After Tax Deductions"
+		ws.Range(letters(preEndCol+4) & "4:" & letters(postEndCol+3) & "5").Interior.ColorIndex = 40
+	end if
+	
+    ws.Range("C4:" & letters(postEndCol+3) & "4").Borders(9).LineStyle = 1
+    ws.Range("C4:" & letters(postEndCol+3) & "4").Borders(9).Weight = &HFFFFEFD6
+    ws.Range(letters(postEndCol+4) & "5").Value = "Net"
+	ws.range(letters(postEndCol+5) & "5").value = "Check Date"
+	ws.range(letters(postEndCol+6) & "5").value = "Emp. ID"
+
+	netCol = postEndCol+4
+	FirstEmpRow = 6
+    LastEmpRow = FirstEmpRow + empCount
+    ws.Range("A" & LastEmpRow & ":" & letters(netCol + 2) & LastEmpRow).Borders(9).LineStyle = 1
+    ws.Range("A" & LastEmpRow & ":" & letters(netCol + 2) & LastEmpRow).Borders(9).Weight = &HFFFFEFD6
+    ws.Range("A" & LastEmpRow + 2).Value = "Total"
+    For Counter = 2 To netCol
+        ws.Range(letters(Counter) & LastEmpRow + 2).Formula = "=Sum(" & letters(Counter) & FirstEmpRow & ":" & letters(Counter) & LastEmpRow & ")"
+    Next
+    ws.Range("C" & FirstEmpRow & ":" & letters(netCol) & LastEmpRow + 2).NumberFormat = "_($* #,##0.00_);_($* (#,##0.00);_($* ""-""??_);_(@_)"
+    ws.Range("A1:F1").Merge
+    ws.Range("A2:F2").Merge
+    ws.Range("A3:F3").Merge
+    ws.Range("A1").HorizontalAlignment = &HFFFFEFDD
+    ws.Range("A2").HorizontalAlignment = &HFFFFEFDD
+    ws.Range("A3").HorizontalAlignment = &HFFFFEFDD
+    ws.Rows("5:5").RowHeight = 27
+    ws.Rows("5:5").HorizontalAlignment = &HFFFFEFF4
+    ws.Rows("5:5").VerticalAlignment = &HFFFFEFF5'&HFFFFEFC0
+    ws.Rows("5:5").WrapText = True
+    ws.Columns("B:B").ColumnWidth = 1.57
+    ws.Columns("A:" & letters(netCol + 1)).Autofit
+	
+	ws.UsedRange.EntireColumn.AutoFit	
+end Sub
+
+Function getCodeExcelColumn(aryData, aMax, detAndCode)
+	getCodeExcelColumn = ""
+	For counter = 0 to aMax
+		detcode = aryData(0, counter) & aryData(1, Counter)
+		if detcode = detAndCode then
+			getCodeExcelColumn = aryData(4, counter)
+			found = true
+			exit for
+		end if
+	Next
+end function
+
+Sub EndExport()
+	Set ws = getWorkSheet(1)
+	DoPageSetup ws
+	FinishExcel()
+end Sub
+
+
+Public Function ProcToDate(theProcess)
+    y = Left(theProcess, 4)
+    m = Mid(theProcess, 5, 2)
+    d = Mid(theProcess, 7, 2)
+    ProcToDate = DateSerial(CLng(y), CLng(m), CLng(d))
+
+End Function

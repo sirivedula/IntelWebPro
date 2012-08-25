@@ -1,0 +1,23 @@
+DATE	HOUR	ALARM TIME	ALARM TYPE	ALARM DETAILS	ALARM DEVICE	PANEL	SITE	DEPT/REG
+4/25/2011	0801-0900	8:54:37	Cabinet Tamper		CHS1-1.2.04-MDF FRONT IN	(Corp Ofc) CHS1-A1	CHS1	Affiliate
+4/26/2011	0801-0900	8:45:03	Anti-Passback Violation	484113: White,  Terrell	EWR3-1.2.04-17FL MDF IN	(Corp Ofc) EWR3-A1	EWR3	Affiliate
+4/26/2011	0801-0900	8:45:07	Anti-Passback Violation	484113: White,  Terrell	EWR3-1.2.04-17FL MDF IN	(Corp Ofc) EWR3-A1	EWR3	Affiliate
+4/22/2011	0901-1000	9:29:27	Motion Detector	EWR3-MDF MD	EWR3-1.2.04-17FL MDF IN	(Corp Ofc) EWR3-A1	EWR3	Affiliate
+4/22/2011	0901-1000	9:32:30	Motion Detector	EWR3-MDF MD	EWR3-1.2.04-17FL MDF IN	(Corp Ofc) EWR3-A1	EWR3	Affiliate
+4/25/2011	0901-1000	9:22:13	Motion Detector	MSN2-MDF MD	MSN2-1.2.01-MDF IN	(Corp Ofc) MSN2-A1	MSN2	Affiliate
+4/25/2011	0901-1000	9:22:59	Door Forced Open		MSN2-1.2.01-MDF IN	(Corp Ofc) MSN2-A1	MSN2	Affiliate
+4/25/2011	0901-1000	9:23:09	Motion Detector	MSN2-MDF MD	MSN2-1.2.01-MDF IN	(Corp Ofc) MSN2-A1	MSN2	Affiliate
+4/25/2011	0901-1000	9:23:16	Anti-Passback Violation	642161: Curtiss,  Andrew  S	MSN2-1.2.01-MDF OUT	(Corp Ofc) MSN2-A1	MSN2	Affiliate
+4/25/2011	0901-1000	9:23:20	Anti-Passback Violation	642161: Curtiss,  Andrew  S	MSN2-1.2.01-MDF OUT	(Corp Ofc) MSN2-A1	MSN2	Affiliate
+4/25/2011	0901-1000	9:23:22	Anti-Passback Violation	642161: Curtiss,  Andrew  S	MSN2-1.2.01-MDF OUT	(Corp Ofc) MSN2-A1	MSN2	Affiliate
+4/25/2011	0901-1000	9:23:23	Door Forced Open		MSN2-1.2.01-MDF IN	(Corp Ofc) MSN2-A1	MSN2	Affiliate
+4/21/2011	1101-1200	11:58:21	Motion Detector	SBP1-1.04-MDF MD	SBP1-1.2.03-IN1	(Corp Ofc) SBP1-A1	SBP1	Affiliate
+4/25/2011	2101-2200	21:05:59	Anti-Passback Violation	755194: Maniyuth,  Jeenus	BLR1-2.2.01-2F MDF IN	uc_(Corp Ofc) BLR1-A2	BLR1	Corp
+4/25/2011	2101-2200	21:06:06	Anti-Passback Violation	755194: Maniyuth,  Jeenus	BLR1-2.2.01-2F MDF IN	uc_(Corp Ofc) BLR1-A2	BLR1	Corp
+4/26/2011	0001-0100	0:41:54	Door Held Open		EDI1-1.2.03-MDF IN	(Corp Ofc) EDI1-A1	EDI1	Corp
+4/23/2011	0101-0200	1:50:38	Anti-Passback Violation	577015: D,  Vasram  Naik	HYD1-1.2.02-9FL MDF OUT	(Corp Ofc) HYD1-A1	HYD1	Corp
+4/23/2011	0101-0200	1:50:46	Anti-Passback Violation	577015: D,  Vasram  Naik	HYD1-1.2.02-9FL MDF OUT	(Corp Ofc) HYD1-A1	HYD1	Corp
+4/23/2011	0101-0200	1:51:02	Motion Detector	HYD1-1.04-9FL MDF MD	HYD1-1.3.21.01-IN	(Corp Ofc) HYD1-A1	HYD1	Corp
+4/23/2011	0101-0200	1:52:45	Anti-Passback Violation	577015: D,  Vasram  Naik	HYD1-1.2.02-9FL MDF IN	(Corp Ofc) HYD1-A1	HYD1	Corp
+4/23/2011	0101-0200	1:53:00	Anti-Passback Violation	577015: D,  Vasram  Naik	HYD1-1.2.02-9FL MDF IN	(Corp Ofc) HYD1-A1	HYD1	Corp
+4/26/2011	0601-0700	6:09:29	Anti-Passback Violation	667260: Mendem,  Chinnadass	HYD1-1.2.02-9FL MDF OUT	(Corp Ofc) HYD1-A1	HYD1	Corp

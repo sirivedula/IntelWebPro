@@ -1,0 +1,84 @@
+﻿<%--
+Default skin template. The following skins are provided as examples only.
+
+1. Named control skin. The SkinId should be uniquely defined because
+   duplicate SkinId's per control type are not allowed in the same theme.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Default skin. The SkinId is not defined. Only one default 
+   control skin per control type is allowed in the same theme.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+
+--%>
+<asp:Wizard runat="server"
+            StepNextButtonText="Next"
+            StepPreviousButtonText="Back"
+            FinishCompleteButtonText="Save">
+</asp:Wizard>
+<asp:Button runat="server" SkinID="WizardButton"
+            Width="75px"/>
+
+<asp:TextBox runat="server" 
+            CssClass ="textboxFontSize" />
+
+<asp:GridView 
+    CssClass="dataGrid"
+    runat="server">
+    <HeaderStyle CssClass="headerStyle" />
+    <AlternatingRowStyle CssClass="alternatingItemStyle" />
+    <SelectedRowStyle CssClass="selectedItemStyle"  />
+    <FooterStyle CssClass="footerStyle"  />
+    <PagerStyle CssClass="pagerStyle"  />
+</asp:GridView>
+
+<asp:GridView
+    CssClass="dataGrid"
+    runat="server"
+    SkinID="SubGridNonSelectable">
+    <HeaderStyle CssClass="headerStyle" />
+    <AlternatingRowStyle CssClass="nonSelectableAlternatingItemStyle" />
+    <SelectedRowStyle CssClass="nonSelectableItemStyle"  />
+    <FooterStyle CssClass="footerStyle"  />
+    <PagerStyle CssClass="pagerStyle"  />
+    <RowStyle CssClass="nonSelectableItemStyle" />
+</asp:GridView>
+
+    
+<cpe:GridView 
+    runat="server">
+    <GridView 
+        CssClass="dataGrid"
+        runat="server">
+        <HeaderStyle CssClass="headerStyle" />
+        <AlternatingRowStyle CssClass="alternatingItemStyle" />
+        <SelectedRowStyle CssClass="selectedItemStyle"  />
+        <FooterStyle CssClass="footerStyle"  />
+        <PagerStyle CssClass="pagerStyle"  />
+    </GridView>
+    <Pager
+        CssClass="pagerStyle"
+        runat="server" 
+        FirstPageImageURL="~/Images/navigate_beginning.png" 
+        LastPageImageURL="~/Images/navigate_end.png" 
+        NextPageImageURL="~/Images/navigate_right.png" 
+        PreviousPageImageURL="~/Images/navigate_left.png" />
+</cpe:GridView>
+
+<asp:label runat="server" />
+<asp:label 
+        runat="server" 
+        Font-Bold="True" 
+        Font-Names="Tahoma" 
+        ForeColor="#006699"
+        SkinID="QueueGroupTitle" />
+       
+<ajax:HoverMenuExtender 
+        runat="Server"
+        PopDelay="300" />
+
+<asp:RadioButtonList runat="server" SkinID="WizardRadioGroup"
+                     RepeatDirection="Horizontal"/>

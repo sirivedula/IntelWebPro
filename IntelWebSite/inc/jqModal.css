@@ -1,0 +1,51 @@
+/* jqModal base Styling courtesy of;
+	Brice Burgess <bhb@iceburg.net> */
+
+/* The Window's CSS z-index value is respected (takes priority). If none is supplied,
+	the Window's z-index value will be set to 3000 by default (via jqModal.js). */
+	
+.jqmWindow {
+    display: none;
+    
+    position: fixed;
+    top: 0px;
+    left: 50%;
+    
+    margin-left: -300px;
+    width: 600px;
+    
+    background-color: #EEE;
+    color: #333;
+    border: 1px solid black;
+    padding: 12px;
+}
+
+.jqmOverlay { background-color: #000; }
+
+/* Fixed posistioning emulation for IE6
+     Star selector used to hide definition from browsers other than IE6
+     For valid CSS, use a conditional include instead */
+* html .jqmWindow {
+     position: absolute;
+     top: 0px;
+}
+
+div.jqmOuter{display: none;position:fixed;overflow:auto;font-family:Tahoma;}
+
+* html div.jqmOuter {
+     position: absolute;
+     top:  0px;
+}
+
+
+div.jqmNotice { background-color:#884A0A; border-left: 2px solid #F1E9DC; border-right: 2px solid #F1E9DC; padding: 0px; }
+
+.jqDrag{
+  cursor:move;
+}
+
+.jqmnTitle{  margin: 0px;width:100%; font-size:16px;  text-align:center;  color:#000;  border-bottom:2px groove #999;}
+  
+div.jqmNotice .jqmClose {  position: absolute;  cursor: pointer;  right: 4px;  top: 5px; }
+
+.jqmnContent{  top:0px; color:#FFF;  font-family:Tahoma; font-size:16px;  padding:0px;  padding-left:10px; }
